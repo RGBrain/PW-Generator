@@ -146,9 +146,8 @@ function generatePassword() {
     password += getRandom(totalArray);
   }
 }
-generatePassword();
-console.log(password);
 
+generatePassword();
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
@@ -161,5 +160,11 @@ function writePassword() {
   passwordText.value = password;
 }
 
+var passwordText = document.querySelector('#password');
+passwordText.value = password;
+// writePassword();
+
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+
+console.log(password);
