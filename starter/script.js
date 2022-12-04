@@ -29,7 +29,7 @@ var specialCharacters = [
 var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 // Array of lowercase characters to be included in password
-var lowerCasedCharacters = [
+var lowercaseCharacters = [
   'a',
   'b',
   'c',
@@ -59,7 +59,7 @@ var lowerCasedCharacters = [
 ];
 
 // Array of uppercase characters to be included in password
-var upperCasedCharacters = [
+var uppercaseCharacters = [
   'A',
   'B',
   'C',
@@ -88,26 +88,49 @@ var upperCasedCharacters = [
   'Z'
 ];
 
-// Create über-array 
-const totalArray = specialCharacters.concat(numericCharacters, lowerCasedCharacters, upperCasedCharacters);
-
-// TODO Create an object for user choices 
+// Create an object for user choices 
 let userOptions = {
-  characters: 10,
+  characters: 5,  // initial placeholder value
   special: true,
   numeric: true,
   lowercase: true,
   uppercase: true
 };
 
+do {
+  userOptions.characters = prompt("How many characters would you like in your password?")
+} while (userOptions.characters < 10 || userOptions.characters > 64)
+
 // Function to prompt user for password options
 function getPasswordOptions() {
-  userOptions.characters = prompt("How many characters would you like in your password?")
-  userOptions.special = confirm("Include special characters?")
-  userOptions.numeric = confirm("Include numeric characters?")
-  userOptions.lowercase = confirm("Include lowercase characters?")
-  userOptions.uppercase = confirm("Include uppercase characters?")
+  userOptions.special = confirm("Include special characters?");
+  userOptions.numeric = confirm("Include numeric characters?");
+  userOptions.lowercase = confirm("Include lowercase characters?");
+  userOptions.uppercase = confirm("Include uppercase characters?");
 }
+
+// Call password options function and validate that at least one character set has been chosen
+do {
+  getPasswordOptions();
+} while (userOptions.special === false && userOptions.numeric === false &&  userOptions.lowercase === false &&  userOptions.uppercase === false)
+
+// Create custom array 
+let totalArray = [];
+if (userOptions.special) {
+  totalArray = totalArray.concat(specialCharacters);
+}
+if (userOptions.numeric) {
+  totalArray = totalArray.concat(numericCharacters);
+}
+if (userOptions.lowercase) {
+  totalArray = totalArray.concat(lowercaseCharacters);
+}
+if (userOptions.uppercase) {
+  totalArray = totalArray.concat(uppercaseCharacters);
+}
+
+
+console.log("total array is now: " + totalArray);
 
 let randomChoice;
 // Function for getting a random element from an array
@@ -115,31 +138,17 @@ function getRandom(arr) {
  return totalArray[randomChoice = Math.floor(Math.random() * totalArray.length)];
 }
 
-// Create custom array in line with user choices 
-userOptions = {
-  characters: 10,
-  special: true,
-  numeric: true,
-  lowercase: true,
-  uppercase: true
-};
 
-// ? For Debugging
-getRandom();
-getPasswordOptions();
-console.log(userOptions)
-console.log(randomChoice)
-console.log(getRandom);
-
-let password;
+let password = "";
 // Function to generate password with user input
 function generatePassword() {
-  for (i=0; i < userOptions.characters.length(); i++) {
-    password += getRandom
+  for (i = 0; i < userOptions.characters; i++) {
+    password += getRandom(totalArray);
   }
 }
 generatePassword();
 console.log(password);
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
