@@ -91,10 +91,11 @@ var uppercaseCharacters = [
 // Declare variables outside function 
 let password = "";
 let totalArray = [];
-
 // Function to generate password with user input
 function generatePassword() {
-    // Create an object for user choices 
+    // clear value of password
+    password = "";
+    // Create an object for user choices
     let userOptions = {
       characters: 5,  // initial placeholder value
       special: true,
@@ -103,11 +104,8 @@ function generatePassword() {
       uppercase: true
     };
 
-    // ? Check password value
-    console.log(password);
-
     do {
-      userOptions.characters = prompt("How many characters would you like in your password?")
+      userOptions.characters = prompt("How many characters would you like in your password? (between 10 - 64)")
     } while (userOptions.characters < 10 || userOptions.characters > 64)
 
     // Function to prompt user for password options
@@ -137,11 +135,11 @@ function generatePassword() {
     if (userOptions.uppercase) {
       totalArray = totalArray.concat(uppercaseCharacters);
     }
-    console.log(totalArray)  // ! THIS IS WORKING !
+    
     let randomChoice;
     // Function for getting a random element from an array
     function getRandom(arr) {
-    return totalArray[randomChoice = Math.floor(Math.random() * totalArray.length)];
+      return totalArray[randomChoice = Math.floor(Math. random() * totalArray.length)];
     }
 
       for (i = 0; i < userOptions.characters; i++) {
@@ -161,14 +159,6 @@ function writePassword() {
   passwordText.value = password;
 }
 
-// ? Check password value
-console.log(password);
-
-var passwordText = document.querySelector('#password');
-passwordText.value = password;
-// writePassword();
-
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
 
-console.log(password);
