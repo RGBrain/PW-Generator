@@ -14,11 +14,19 @@ No need to install, simply visit:  **https://rgbrain.github.io/PW-Generator/**
 
 Having visited https://rgbrain.github.io/PW-Generator/, click on the 'Generate Password' button.  You will then be prompted to make a number of choices:
 
-right click on anywhere on the webpage and choose 'Inspect' or 'Inspect Element'.  Select the 'Console' tab and you will see the Financial Analysis, as below:
+* Number of characters
+* Include Special characters?
+* Include Numberic characters?
+* Include Lowercase characters?
+* Include Uppercase characters?
+
+NB. Number of characters must be between 10 and 64 (inclusive) and at least one character set must be chosen.
+
+A pseudo-random password will then appear in the box on the page - see below screenshot.
 
 **SCREENSHOT**
 
-   ![Project Screenshot](images/screenshot.png)
+   ![Project Screenshot](assets/screenshot.png)
 
 
 ## Credits
@@ -51,14 +59,5 @@ SOFTWARE.
 
 
 ---
-
-## Features
-
-This code performs and displays financial analysis of a set of hard-coded financial records.  The project in its current state is not feature-rich.
-
-
-## How to Contribute
-
-All of the computational code would work with any array of months and profit/loss in the following: [["string", number],["string", number]...] - so an obvious improvement would be to create an interface that would accept other arrays of financial information and return the analysis.  Why not take a branch and see what you can do...?
 
 
